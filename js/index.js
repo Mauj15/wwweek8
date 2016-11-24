@@ -1,4 +1,11 @@
-  document.addEventListener("deviceready", onDeviceReady, false);
+    $ cordova plugin add org.apache.cordova.geolocation
+    $ cordova plugin ls
+    [ 'org.apache.cordova.geolocation' ]
+    $ cordova plugin rm org.apache.cordova.geolocation
+  
+
+
+document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
         console.log("navigator.geolocation works well");
     }
@@ -21,7 +28,9 @@ function getPosition() {
 	$('#time').val("Getting data...");
 	
 	//instruct location service to get position with appropriate callbacks
-	navigator.geolocation.getCurrentPosition(successPosition, failPosition);
+	navigator.geolocation.getCurrentPosition(geolocationSuccess,
+                                         [geolocationError],
+                                         [geolocationOptions]);
 }
 
 
